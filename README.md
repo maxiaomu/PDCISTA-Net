@@ -1,2 +1,2 @@
-# EIT-ISTA-net
+# MCISTA-net
 Code is coming soon...
