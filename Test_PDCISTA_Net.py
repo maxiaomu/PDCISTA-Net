@@ -1,3 +1,4 @@
+# Implement the EIT reconstruction for part of testing data(200 samples) 
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -18,7 +19,7 @@ except ImportError:
     from skimage.measure import compare_ssim as ssim
 from argparse import ArgumentParser
 
-parser = ArgumentParser(description='PDCISTA-Net-plus')
+parser = ArgumentParser(description='PDCISTA-Net')
 
 parser.add_argument('--epoch_num', type=int, default=60, help='epoch number of model')
 parser.add_argument('--layer_num', type=int, default=4, help='phase number of PDCISTA-Net')
@@ -171,7 +172,7 @@ class BasicBlock(torch.nn.Module):
 
         return [x_pred, symloss]
 
-# Define ISTA-Net-plus
+# Define PDCISTA-Net
 class PDCISTANet(torch.nn.Module):
     def __init__(self, LayerNo):
         super(PDCISTANet, self).__init__()
@@ -219,7 +220,7 @@ Testing_data = hdf5storage.loadmat('./%s/%s' % (args.data_dir, Testing_data_Name
 Testing_labels = Testing_data['Testing_mixcircule_200'] 
 # 
 Result_test = './%s/Reconstruct_%d_layer_pdcista.mat' % (args.result_dir, layer_num)
-##################################################Testing_Data_1_object_g2s
+##################################################
 
 Phi = torch.from_numpy(Phi_input).type(torch.FloatTensor)
 Phi = Phi.to(device)
