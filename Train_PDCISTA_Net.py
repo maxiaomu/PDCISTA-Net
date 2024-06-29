@@ -1,3 +1,4 @@
+# Implement the PDCISTA-Net for electrical impedance tomography(EIT)
 import torch
 import torch.nn as nn
 from torch.nn import init
@@ -162,7 +163,7 @@ class BasicBlock(torch.nn.Module):
 
         return [x_pred, symloss]
 
-# Define ISTA-Net-plus
+# Define PDCISTA-Net
 class PDCISTANet(torch.nn.Module):
     def __init__(self, LayerNo):
         super(PDCISTANet, self).__init__()
